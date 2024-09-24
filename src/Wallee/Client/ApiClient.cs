@@ -59,7 +59,7 @@ namespace Wallee.Client
 
             var options = Configuration.RestClientOptions;
             options.BaseUrl = new Uri(Configuration.BasePath);
-            options.MaxTimeout = 600000;
+            options.Timeout = TimeSpan.FromMilliseconds(600000);
             RestClient = new RestClient(options);
         }
 
@@ -152,7 +152,7 @@ namespace Wallee.Client
             String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
             Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
-            String contentType, int timeout)
+            String contentType, TimeSpan timeout)
         {
 
             Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
