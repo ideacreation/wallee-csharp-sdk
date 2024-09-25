@@ -59,7 +59,7 @@ namespace Wallee.Client
 
             var options = Configuration.RestClientOptions;
             options.BaseUrl = new Uri(Configuration.BasePath);
-            options.MaxTimeout = 600000;
+            options.Timeout = TimeSpan.FromMilliseconds(600000);
             RestClient = new RestClient(options);
         }
 
@@ -167,7 +167,7 @@ namespace Wallee.Client
                 pathParams, contentType);
 
             //set timeout for request
-            request.Timeout = timeout;
+            request.Timeout = TimeSpan.FromMilliseconds(timeout);
 
             InterceptRequest(request);
             var response = RestClient.Execute(request);
